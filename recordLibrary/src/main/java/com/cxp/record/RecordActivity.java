@@ -18,7 +18,7 @@ import com.yanzhenjie.permission.Permission;
 
 import java.io.File;
 
-public class MainActivity extends AppCompatActivity {
+public class RecordActivity extends AppCompatActivity {
 
     //播音控制器
     private MediaManager mMediaManager;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_record);
         init();
     }
 
@@ -56,7 +56,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void init() {
+        tvTime = findViewById(R.id.tv_time);
+        RelativeLayout rlPlay = (RelativeLayout) findViewById(R.id.rl_Play);
         ivAnim = (ImageView) findViewById(R.id.iv_anim);
+        rlPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playRecord();
+            }
+        });
         instance = RecorderUtils.getInstance(new RecorderUtils.OnRecordListener() {
             @Override
             public void onStart() {
@@ -94,13 +102,13 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PermissionUtils.newInstance(MainActivity.this)
+                PermissionUtils.newInstance(RecordActivity.this)
                         .checkPermissons(new PermissionUtils.OnPermissionGrantedListener() {
                             @Override
                             public void onPermissionGranted() {
                                 startRec();
                             }
-                        }, Permission.Group.MICROPHONE);
+                        }, Permission.RECORD_AUDIO, Permission.WRITE_EXTERNAL_STORAGE);
             }
         });
         mMediaManager = new MediaManager(this, mHandler);

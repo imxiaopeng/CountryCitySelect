@@ -33,7 +33,7 @@ public class RecorderUtils {
 
             @Override
             public void noRecordRight() {
-//                Toast.makeText(MainActivity.this, "您无录音权限", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RecordActivity.this, "您无录音权限", Toast.LENGTH_SHORT).show();
             }
 
             @Override

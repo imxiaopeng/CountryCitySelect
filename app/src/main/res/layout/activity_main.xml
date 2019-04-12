@@ -54,7 +54,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:text="开启预览" />
+        android:text="开启预览页面" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:background="#fff"
+        android:onClick="openRecord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="开启录音页面" />
 
 
 </LinearLayout>

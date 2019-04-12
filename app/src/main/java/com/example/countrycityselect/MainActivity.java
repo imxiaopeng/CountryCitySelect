@@ -10,8 +10,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cxp.record.RecordActivity;
+import com.example.permission.PermissionUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.yanzhenjie.permission.Permission;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -99,8 +102,13 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "当前没有可预览数据", Toast.LENGTH_SHORT).show();
             return;
         }
-//        PreviewActivity.openPreview(list,this,4);
-        PreviewActivity.openPreviewWithDelete(previewBeans, this, 3);
+        PermissionUtils.newInstance(this).checkPermissons(new PermissionUtils.OnPermissionGrantedListener() {
+            @Override
+            public void onPermissionGranted() {
+//              PreviewActivity.openPreview(list,this,4);
+                PreviewActivity.openPreviewWithDelete(previewBeans, MainActivity.this, 3);
+            }
+        }, Permission.WRITE_EXTERNAL_STORAGE);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -122,5 +130,10 @@ public class MainActivity extends AppCompatActivity {
         if (TextUtils.equals(text, "clear")) {
             previewBeans.clear();
         }
+    }
+
+    public void openRecord(View view) {
+        Intent intent = new Intent(this, RecordActivity.class);
+        startActivity(intent);
     }
 }
