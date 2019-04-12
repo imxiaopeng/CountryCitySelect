@@ -34,18 +34,26 @@ public class CountryListActivity extends AppCompatActivity {
         Type listType = new TypeToken<List<CityBean>>() {
         }.getType();
         final List<CityBean> copyList = new Gson().fromJson(getJson("world.json", this), listType);
-        int i = 0;
-        for (CityBean cityBean : list) {
-            if (selectCountry.equals(cityBean.getCountryRegion().getName())) {
-                i = list.indexOf(cityBean);
-                break;
-            }
-        }
-        if (i != 0) {
-            Collections.swap(list, 0, i);
-        }
         ad = new Ad(this, list, Ad.FLAG_COUNTRY);
+        ad.setEnableLoadMore(true);
         rv.setAdapter(ad);
+        rv.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ad.setEnableLoadMore(false);
+                int i = 0;
+                for (CityBean cityBean : list) {
+                    if (selectCountry.equals(cityBean.getCountryRegion().getName())) {
+                        i = list.indexOf(cityBean);
+                        break;
+                    }
+                }
+                if (i != 0) {
+                    Collections.swap(list, 0, i);
+                }
+                ad.notifyDataSetChanged();
+            }
+        }, 1000);
         ad.setOnItemClickListener(new Ad.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int i) {
@@ -62,6 +70,7 @@ public class CountryListActivity extends AppCompatActivity {
             @Override
             public void onResult(Area area) {
                 selectCountry = area.getCountry();
+                MainActivity.selectCountry = selectCountry;
                 Log.e("--", "已选择地区" + area.getCountry() + "-" + area.getState() + "-" + area.getCity());
                 Intent data = new Intent();
                 data.putExtra("data", area);
@@ -77,6 +86,7 @@ public class CountryListActivity extends AppCompatActivity {
         if (requestCode == 1 && resultCode == RESULT_OK) {
             Area area = data.getParcelableExtra("data");
             selectCountry = area.getCountry();
+            MainActivity.selectCountry = selectCountry;
             setResult(RESULT_OK, data);
             finish();
             Log.e("--", "已选择地区" + area.getCountry() + "-" + area.getState() + "-" + area.getCity());

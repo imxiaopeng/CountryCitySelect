@@ -19,6 +19,11 @@ public class Ad extends RecyclerView.Adapter<VH> {
     public int index_country = 0;
     public int index_state = 0;
     public int index_city = 0;
+    private boolean enableLoadMore = false;
+
+    public void setEnableLoadMore(boolean enableLoadMore) {
+        this.enableLoadMore = enableLoadMore;
+    }
 
     public Ad(Context context, List<CityBean> datas, int flag) {
         this.datas = datas;
@@ -167,7 +172,7 @@ public class Ad extends RecyclerView.Adapter<VH> {
 
     @Override
     public int getItemCount() {
-        int size = datas == null ? 0 : datas.size();
+        int size = datas == null ? 0 : enableLoadMore ? 80 : datas.size();
         if (datas != null) {
             switch (flag) {
                 case FLAG_COUNTRY:
