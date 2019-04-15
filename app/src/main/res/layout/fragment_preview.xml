@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.countrycityselect.MyJzvdStd
+    <com.cxp.common_library.preview.MyJzvdStd
         android:id="@+id/videoPlayer"
         android:visibility="gone"
         android:layout_width="match_parent"

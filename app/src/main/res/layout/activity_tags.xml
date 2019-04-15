@@ -6,7 +6,7 @@
     android:background="#fff"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".TagsActivity">
+    tools:context=".selete_tags.TagsActivity">
 
     <com.cy.cyflowlayoutlibrary.FlowLayout
         android:layout_margin="5dp"

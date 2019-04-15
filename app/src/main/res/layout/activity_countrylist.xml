@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#EFEFEF"
-        tools:context=".CountryListActivity">
+        tools:context=".selete_area.CountryListActivity">
 
         <TextView
             android:focusable="true"

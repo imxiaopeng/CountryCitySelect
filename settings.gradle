@@ -1,1 +1,1 @@
-include ':app', ':recordLibrary', ':permission'
+include ':app',  ':permission'

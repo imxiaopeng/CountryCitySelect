@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DanmuActivity"
+    tools:context=".danmu.DanmuActivity"
     android:orientation="vertical">
 
-    <com.example.countrycityselect.BarrageView
+    <com.cxp.common_library.danmu.BarrageView
         android:clipChildren="false"
         android:layout_margin="5dp"
         android:id="@+id/barrageview"

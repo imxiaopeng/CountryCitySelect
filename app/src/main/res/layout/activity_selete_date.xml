@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#efefef"
     android:orientation="vertical"
-    tools:context=".SeleteDateActivity">
+    tools:context=".selete_date.SeleteDateActivity">
 
     <LinearLayout
         android:background="#fff"

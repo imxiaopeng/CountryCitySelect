@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.countrycityselect">
+    package="com.cxp.common_library">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -16,10 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PreviewActivity"></activity>
-        <activity android:name=".DanmuActivity" />
-        <activity android:name=".TagsActivity" />
-        <activity android:name=".SeleteDateActivity" />
+        <activity android:name=".preview.PreviewActivity"></activity>
+        <activity android:name=".danmu.DanmuActivity" />
+        <activity android:name=".selete_tags.TagsActivity" />
+        <activity android:name=".selete_date.SeleteDateActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,8 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SelectCityActivity" />
-        <activity android:name=".CountryListActivity" />
+        <activity android:name=".selete_area.SelectCityActivity" />
+        <activity android:name=".selete_area.CountryListActivity" />
+        <activity android:name=".record.RecordActivity" />
     </application>
 
 </manifest>
